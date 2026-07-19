@@ -467,3 +467,4 @@ Building ASTRA required solving 15 hard engineering problems. Here are the chall
 - **Safe Harbor:** If a bank embeds ASTRA and it flags a legitimate transaction, the customer chooses to proceed. If it flags a scam and the customer stops, the bank gets the credit. Worst case is a 60-second inconvenience. Best case is ₹10 lakh saved.
 
 
+
