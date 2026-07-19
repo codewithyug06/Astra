@@ -8,10 +8,11 @@
   <h2><strong>Team Name</strong></h2>
 </div>
 
-
 <div align="center">
   <img src="./assets/team_logo.png" width="280" alt="PromptVibers Logo">
-  <hr style="border: 2px solid #333; margin: 30px 0;">
+  
+
+<hr style="border: 2px solid #333; margin: 30px 0;">
 
   <h1><strong>ASTRA</strong></h1>
   <h3>(Autonomous Sequence & Temporal Risk Architecture)</h3>
@@ -115,7 +116,7 @@ The honest answer, built into every design decision here, is: *mostly, and imper
 None of those are marketing problems to paper over. They're engineering problems to keep solving, one redundant path and one gated threshold at a time — which is the actual difference between a hackathon pitch and a system someone might eventually trust with their life savings.
 
 <hr style="border: 2px solid #333; margin: 40px 0;">
-*ASTRA: the bodyguard that lives inside your call. It doesn't stop the scammer from calling. It stops you from paying.*
 
+*ASTRA: the bodyguard that lives inside your call. It doesn't stop the scammer from calling. It stops you from paying.*
 
 

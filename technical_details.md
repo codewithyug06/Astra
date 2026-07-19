@@ -44,6 +44,7 @@ Circuit-breaker    R(t) > 0.80 AND banking app opened → 60-second cooling-off 
 ```
 
 <hr style="border: 2px solid #333; margin: 40px 0;">
+
 ## Part 2: Architecture & File Skeleton
 
 ![System Architecture Diagram](./assets/tech_architecture_diagram.png)
@@ -98,11 +99,13 @@ NEVER leaves the device: raw audio, raw video frames, full transcript, caller PI
 This isn't a privacy policy promise — it's an architectural fact. A privacy policy is marketing. A C++ model with no network socket is engineering. The distinction matters when a judge, a bank compliance officer, or a skeptical user asks "is this app spying on me?"
 
 <hr style="border: 2px solid #333; margin: 40px 0;">
+
 ## Technical Workflow Approach
 
 ![Threat Detection Workflow](./assets/tech_workflow_diagram.png)
 
 <hr style="border: 2px solid #333; margin: 40px 0;">
+
 ## Part 3: The Autonomous Evidence Swarm — Attacking the 51% Reporting Gap
 
 Here's an insight that shaped one of ASTRA's more unusual components: **the victim is isolated and psychologically incapable of acting on their own behalf during the exact window when the most actionable evidence exists.** So the system acts *for* them, asynchronously, starting the moment the Isolation phase fires — not waiting for the call to end.
@@ -140,6 +143,7 @@ def build_swarm_graph():
 The reasoning behind why this specifically targets the 51%-non-reporting statistic: the most commonly cited reason victims don't file a complaint is the *effort and shame* of reconstructing the incident afterward. ASTRA removes both barriers — the packet already exists before the call even ends.
 
 <hr style="border: 2px solid #333; margin: 40px 0;">
+
 ## Part 4: The Multimodal Layer — Why Deepfake Detection Is Gated, Not Primary
 
 Digital-arrest scams increasingly involve fabricated police uniforms, fake station backdrops, and — as deepfake tooling commoditizes — real-time face-swap or voice-cloned video. ASTRA's video pipeline runs three checks locally at 2fps:
@@ -155,6 +159,7 @@ This is exactly *why* the gating formula exists. `β = 0.25` means the visual ch
 **An upgrade we added after adversarial review:** a scammer could theoretically wear a convincing fake uniform while speaking casually for ten minutes, staying under `τ_gate` the entire time — invisible to the video channel. The fix is a Tier-1 *ungated* pre-screen running at just 0.5fps, detecting only one binary signal: is this an official uniform/backdrop? If yes, `τ_gate` dynamically drops from 0.35 to 0.105 for that call — meaning a single authority phrase now immediately activates full deepfake analysis. The uniform itself becomes the trigger that unlocks scrutiny of the uniform.
 
 <hr style="border: 2px solid #333; margin: 40px 0;">
+
 ## Part 5: Tamil and Hindi — Building for the Languages Scammers Actually Use
 
 English-only scam detection is close to useless in India. Scammers speak Hindi, Tamil, Telugu, Bengali, and — critically — code-mixed variants of all of them. ASTRA's bilingual-first Gemini scorer carries explicit few-shot examples in both Hindi and Tamil:
@@ -193,6 +198,7 @@ Since zero real annotated scam transcripts exist for either language, we built a
 **The honest generalization gap, stated plainly:** LLM-generated dialogue is grammatically clean. Real scammers — especially from documented fraud hubs like Jamtara or Mewat — use erratic regional slang, self-interruption, incomplete sentences, and rapid dialect switching that clean synthetic data doesn't teach a model to handle. Our fix: train on **ASR-output text** (not clean text), inject hesitation markers ("haan haan", "suno"), simulate character dropout the way real ASR errors look, and truncate sentences mid-way. On our adversarial eval set, F1 degrades honestly from 0.92 (clean synthetic) to 0.78 (noise-augmented, closer to real conditions) — still roughly 3× better than keyword matching, and we report both numbers rather than hiding the gap.
 
 <hr style="border: 2px solid #333; margin: 40px 0;">
+
 ## Part 6: Evaluation — Proving It's Not Just an LLM Wrapper
 
 The single most common objection any system like this receives is "isn't this just regex with extra steps?" The answer has to be data, not assertion. ASTRA's eval plan runs four configurations against the same held-out adversarial set:
@@ -226,6 +232,7 @@ Five sanity checks validate the fusion math specifically:
 The single strongest rebuttal to "isn't this just keyword matching" is the Set D result table shown on stage for ten seconds: keyword-only baseline recall craters on paraphrased scripts while the full system's recall barely moves, because it's tracking behavioral concepts (authority, isolation, urgency), not literal words.
 
 <hr style="border: 2px solid #333; margin: 40px 0;">
+
 ## Part 7: Every Hard Challenge, Answered Honestly
 
 A system like this invites serious technical skepticism. Rather than avoid the hard questions, here's the complete list we prepared for, with the actual engineering answer for each — not marketing spin.
@@ -267,6 +274,7 @@ The system must protect the victim even if offline. Audio capture, Whisper ASR, 
 Banks won't adopt a tool if they are liable for false negatives. ASTRA is positioned as a "customer safety feature" (second opinion tool), not a fraud prevention guarantee. The safe harbor: If a bank embeds ASTRA and it flags a legitimate transaction, the customer chooses to proceed. If it flags a scam and the customer stops, the bank gets the credit. Worst case is a 60-second inconvenience. Best case is ₹10 lakh saved.
 
 <hr style="border: 2px solid #333; margin: 40px 0;">
+
 ## Part 8: What Judges Will Actually Push On
 
 Presenting a system this ambitious invites five predictable attack lines, each with a rehearsed, honest response:
@@ -287,6 +295,7 @@ ASTRA is complementary, not competitive: pre-call spoofing blocks, plus in-call 
 Correct, and ASTRA never claims to force-close Google Pay. It draws a `TYPE_ACCESSIBILITY_OVERLAY` (or, in the Play Store build, a full-screen Activity triggered by `PACKAGE_USAGE_STATS`) on top of the payment app — a 60-second cooling-off screen requiring active confirmation to proceed. This is architecturally identical to a bank's mandatory cooling-off period for large wire transfers, implemented one layer earlier, at the device.
 
 <hr style="border: 2px solid #333; margin: 40px 0;">
+
 ## Part 9: Tech Stack & Repository Structure, End to End
 
 | Layer | Technology | Why This Choice |
@@ -337,6 +346,7 @@ Layer 4 (activates at R(t) > 0.55)     → async swarm agents (server-side, zero
 Worst-case battery draw with all four layers active for a full hour: roughly 8%, comparable to an hour of turn-by-turn navigation.
 
 <hr style="border: 2px solid #333; margin: 40px 0;">
+
 ## Part 10: Business Model and Roadmap
 
 | Model | Detail |
@@ -352,7 +362,9 @@ Worst-case battery draw with all four layers active for a full hour: roughly 8%,
 - **Phase 3 :** Extend the taxonomy to grandparent scams, deepfake-celebrity investment fraud, and romance scams; expansion into Bangladesh, Pakistan, and the Philippines, which share the same attack pattern; formal government API integration; publish the annotated coercion-phase corpus as an open academic dataset
 
 <hr style="border: 2px solid #333; margin: 40px 0;">
+
 <hr style="border: 2px solid #333; margin: 40px 0;">
+
 # ASTRA — Engineering Challenges & Production Solutions
 
 Building ASTRA required solving 15 hard engineering problems. Here are the challenges and the real engineering solutions implemented to make the platform robust, privacy-first, and highly effective.
