@@ -1,3 +1,5 @@
+
+https://github.com/user-attachments/assets/ac5a3300-c7e3-43eb-865a-b54c9fd94684
 # ASTRA: Development Progress Till Now
 
 We are actively developing ASTRA to be the first defense layer that operates *during* a scam call. Here is our development progress so far:
@@ -44,8 +46,7 @@ To combat the 51% incident non-reporting gap, the backend triggers a LangGraph s
 - **EvidencePacketAgent:** Pre-compiles a complete NCRP (National Cyber Crime Reporting Portal) payload live *during* the call, requiring just one tap from the victim to file an official report.
 
 **Web Dashboard Demo Video:**  
-<!-- DRAG AND DROP YOUR .MP4 VIDEO FILE RIGHT BELOW THIS LINE IN THE GITHUB WEB EDITOR -->
-[DRAG_AND_DROP_VIDEO_HERE]
+[Uploading 1 (2).mp4…]
 
 **Dashboard (Low Risk)**  
 <img src="./assets/web_dashboard_low_risk.png" width="800">
