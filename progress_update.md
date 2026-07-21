@@ -44,8 +44,8 @@ To combat the 51% incident non-reporting gap, the backend triggers a LangGraph s
 - **EvidencePacketAgent:** Pre-compiles a complete NCRP (National Cyber Crime Reporting Portal) payload live *during* the call, requiring just one tap from the victim to file an official report.
 
 **Web Dashboard Demo Video:**  
-*(Click the image below to watch the demo video)*  
-[![Web Dashboard Demo Video](./assets/web_dashboard_low_risk.png)](https://github.com/codewithyug06/Astra/blob/main/assets/web_dashboard_demo.mp4)
+<video src="./assets/web_dashboard_demo.mp4" width="600" controls="controls">
+</video>
 
 **Dashboard (Low Risk)**  
 <img src="./assets/web_dashboard_low_risk.png" width="800">
