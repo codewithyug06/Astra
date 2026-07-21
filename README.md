@@ -105,6 +105,11 @@ Why does sequence matter so much? Because a call that opens with Phase 5 languag
 
 The rehearsal discipline behind this: both phones on shared WiFi, backend deployed (never localhost during a live demo), judge's phone pre-registered as a trusted contact, the scam script rehearsed verbatim in exact order, GPay pre-launched, and — critically — a full screen-recorded fallback video always on hand.
 
+<div align="center">
+  <img src="./assets/whatsapp_image.jpeg" width="600" alt="Real-world RBI WhatsApp Scam Example">
+  <p><em>A real-world example from a recent LinkedIn post highlighting the audacity of modern scammers. Here, the user easily spotted the fraud because the scammer carelessly used a child's photo as their profile picture (DP). However, if the scammer had used an official RBI logo, a vulnerable user could easily have fallen for the fabricated urgency and malicious attachments. In highly convincing, high-stress situations like that, surface-level visual checks fail—which is exactly where ASTRA's real-time coercion detection steps in to intercept the threat and stop the scam.</em></p>
+</div>
+
 <hr style="border: 2px solid #333; margin: 40px 0 70px 0;">
 
 ## Epilogue: What This Project Actually Is

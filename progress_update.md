@@ -43,6 +43,9 @@ To combat the 51% incident non-reporting gap, the backend triggers a LangGraph s
 - **CredentialVerifierAgent:** Cross-references claimed "police badges" against known-fake ThreatDB databases.
 - **EvidencePacketAgent:** Pre-compiles a complete NCRP (National Cyber Crime Reporting Portal) payload live *during* the call, requiring just one tap from the victim to file an official report.
 
+**Web Dashboard Demo Video:**  
+<video src="./assets/web_dashboard_demo.mp4" width="800" controls></video>
+
 **Dashboard (Low Risk)**  
 <img src="./assets/web_dashboard_low_risk.png" width="800">
 
@@ -57,7 +60,21 @@ We have initiated the development of the ASTRA Android App demo. This on-device 
 - **Architecturally Enforced Privacy:** Audio and video never leave the device. The app only transmits an anonymized `0-1` risk score and hashed caller ID to the backend.
 - **Payment Circuit-Breaker:** When risk `R(t) > 0.80`, it uses a `PACKAGE_USAGE_STATS` / Accessibility overlay to block Google Pay/PhonePe with a mandatory 60-second cooling-off screen.
 
-| Android Setup | Android Settings |
+**Building the Android UI:**
+
+<div align="center">
+  <img src="./assets/ui_build_1.png" width="800">
+  <br><br>
+  <img src="./assets/ui_build_2.png" width="800">
+</div>
+
+
+| Android Setup | Android Language |
 |:---:|:---:|
-| <img src="./assets/android_setup.png" width="350"> | <img src="./assets/android_settings.png" width="350"> |
-| <img src="./assets/android_simulation.png" width="350"> | <img src="./assets/android_intervention.png" width="350"> |
+| <img src="./assets/android_setup.png" width="350"> | <img src="./assets/android_language.png" width="350"> |
+| **Android Settings** | **Android Simulation** |
+| <img src="./assets/android_settings.png" width="350"> | <img src="./assets/android_simulation.png" width="350"> |
+| **Android Intervention** | |
+| <img src="./assets/android_intervention.png" width="350"> | |
+
+
